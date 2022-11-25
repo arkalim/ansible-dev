@@ -1,0 +1,26 @@
+---
+- name: Download homebrew installation script
+  get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    dest: /tmp/install.sh
+
+- name: Make homebrew installation script executable
+  file:
+    dest: /tmp/install.sh
+    mode: a+x
+
+- name: Run homebrew installation script
+  shell: echo | /tmp/install.sh
+
+- name: Add brew to PATH variable
+  shell: |
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zshrc
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+- name: Install build-essential
+  become: true
+  apt:
+    name:
+      - build-essential
+    state: latest

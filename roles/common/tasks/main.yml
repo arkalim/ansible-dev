@@ -1,0 +1,17 @@
+---
+- name: Update package repository
+  become: true
+  apt:
+    update_cache: true
+    upgrade: dist
+  when: ansible_distribution == "Ubuntu"
+  changed_when: false
+
+- name: Install zsh
+  include_tasks: zsh.yml
+
+- name: Install homebrew
+  include_tasks: brew.yml
+
+- name: Add aliases to zshrc
+  include_tasks: aliases.yml

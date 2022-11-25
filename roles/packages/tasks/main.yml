@@ -1,0 +1,19 @@
+---
+- name: Update and upgrade brew package repository
+  homebrew:
+    update_homebrew: true
+    upgrade_all: true
+
+- name: Install required packages
+  homebrew:
+    name:
+      - gcc
+      - htop
+      - fzf
+      - neovim
+    state: latest
+
+- name: Package related settings
+  shell: |
+    echo | /home/linuxbrew/.linuxbrew/opt/fzf/install
+    git clone https://github.com/SarthakNarayan/neovim-config $HOME/.config/nvim

@@ -1,0 +1,10 @@
+- name: add aliases to zshrc file
+  shell: |
+    echo "alias vim=nvim"
+    echo "alias c='clear -x'" >> $HOME/.zshrc
+    echo "alias sc='source $HOME/.zshrc'" >> $HOME/.zshrc
+    echo "alias rc='vim $HOME/.zshrc'" >> $HOME/.zshrc
+    echo "alias cp='cp -v'" >> $HOME/.zshrc
+    echo "alias mv='mv -v'" >> $HOME/.zshrc
+    echo "alias path='print -l $path'" >> $HOME/.zshrc
+    echo "alias history=\"history -t '%F'\"" >> $HOME/.zshrc

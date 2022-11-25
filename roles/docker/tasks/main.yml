@@ -1,0 +1,36 @@
+---
+# Install docker
+- name: Add Docker GPG apt Key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  become: true
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Update apt and install docker-ce
+  become: true
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: true
+# Execute docker commands without sudo
+- name: Get current user
+  shell: echo $USER
+  register: user
+
+- name: Add username to docker group
+  become: true
+  shell: usermod -aG docker "{{ user.stdout }}"
+
+# Install docker-compose
+- name: Install Docker Compose
+  become: true
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.13.0/docker-compose-linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: u+x,g+x,o+x

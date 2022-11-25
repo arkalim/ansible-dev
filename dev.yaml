@@ -1,0 +1,7 @@
+---
+- name: Setup development environment
+  hosts: all
+  roles:
+    # - common
+    # - packages
+    - docker
