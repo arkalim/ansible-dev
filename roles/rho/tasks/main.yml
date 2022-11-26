@@ -1,0 +1,11 @@
+---
+- name: Create files directory
+  file:
+    path: $HOME/files/
+    state: directory
+- name: Copy customer pacs config if not already present
+  copy:
+    src: cstm_pacs_config.json
+    dest: $HOME/files/cstm_pacs_config.json
+    mode: "0644"
+    force: no
