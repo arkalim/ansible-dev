@@ -9,3 +9,17 @@
     dest: $HOME/files/cstm_pacs_config.json
     mode: "0644"
     force: no
+# Create rho-net
+- name: Create Rho external resources
+  shell: |
+    docker network create rho-net
+    docker volume create --name=rho-vol-db
+    docker volume create --name=rho-vol-orthanc
+    docker volume create --name=rho-vol-mq
+    docker run -d -p 4243:4243 -p 8043:8043 -e WVB_ENABLED=true --net rho-net --rm --name rho_dummy_pacs -v $HOME/files/cstm_pacs_config.json:/etc/orthanc/orthanc.json jodogne/orthanc:1.9.7 /etc/orthanc --verbose
+
+- name: Install packages
+  apt:
+    name:
+      - postgresql-client
+    state: latest
