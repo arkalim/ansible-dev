@@ -11,9 +11,12 @@
       - htop
       - fzf
       - neovim
+      - tmux
+      - autojump
     state: latest
 
 - name: Package related settings
   shell: |
     echo | /home/linuxbrew/.linuxbrew/opt/fzf/install
     git clone https://github.com/SarthakNarayan/neovim-config $HOME/.config/nvim
+    echo "[ -f /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh" >> $HOME/.zshrc
