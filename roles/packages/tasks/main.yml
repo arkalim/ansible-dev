@@ -31,7 +31,7 @@
 
 - name: Apt package related settings
   shell: |
-    echo "export PATH=\"$HOME/.local/bin:$PATH\"" >> $HOME/.zshrc
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.zshrc
 
 - name: Install black
   pip:

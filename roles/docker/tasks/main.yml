@@ -27,6 +27,9 @@
   become: true
   shell: usermod -aG docker "{{ user.stdout }}"
 
+- name: Reset SSH connection
+  meta: reset_connection
+
 # Install docker-compose
 - name: Install Docker Compose
   become: true

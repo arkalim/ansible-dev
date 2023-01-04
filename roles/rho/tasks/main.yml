@@ -1,14 +1,14 @@
 ---
-- name: Create files directory
-  file:
-    path: $HOME/files/
-    state: directory
-- name: Copy customer pacs config if not already present
-  copy:
-    src: cstm_pacs_config.json
-    dest: $HOME/files/cstm_pacs_config.json
-    mode: "0644"
-    force: no
+# - name: Create files directory
+#   file:
+#     path: $HOME/files/
+#     state: directory
+# - name: Copy customer pacs config if not already present
+#   copy:
+#     src: cstm_pacs_config.json
+#     dest: $HOME/files/cstm_pacs_config.json
+#     mode: "0644"
+#     force: no
 # Create rho-net
 - name: Create Rho external resources
   shell: |
@@ -16,9 +16,9 @@
     docker volume create --name=rho-vol-db
     docker volume create --name=rho-vol-orthanc
     docker volume create --name=rho-vol-mq
-    docker run -d -p 4243:4243 -p 8043:8043 -e WVB_ENABLED=true --net rho-net --rm --name cstm-pacs -v $HOME/files/cstm_pacs_config.json:/etc/orthanc/orthanc.json jodogne/orthanc:1.9.7 /etc/orthanc --verbose
 
 - name: Install packages
+  become: True
   apt:
     name:
       - postgresql-client
