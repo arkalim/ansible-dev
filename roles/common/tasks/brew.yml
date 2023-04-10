@@ -2,15 +2,15 @@
 - name: Download homebrew installation script
   get_url:
     url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-    dest: /tmp/install.sh
+    dest: /tmp/install-brew.sh
 
 - name: Make homebrew installation script executable
   file:
-    dest: /tmp/install.sh
+    dest: /tmp/install-brew.sh
     mode: a+x
 
 - name: Run homebrew installation script
-  shell: echo | /tmp/install.sh
+  shell: echo | /tmp/install-brew.sh
 
 - name: Add brew to PATH variable
   shell: |

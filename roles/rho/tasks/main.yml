@@ -1,22 +1,3 @@
----
-# - name: Create files directory
-#   file:
-#     path: $HOME/files/
-#     state: directory
-# - name: Copy customer pacs config if not already present
-#   copy:
-#     src: cstm_pacs_config.json
-#     dest: $HOME/files/cstm_pacs_config.json
-#     mode: "0644"
-#     force: no
-# Create rho-net
-- name: Create Rho external resources
-  shell: |
-    docker network create rho-net
-    docker volume create --name=rho-vol-db
-    docker volume create --name=rho-vol-orthanc
-    docker volume create --name=rho-vol-mq
-
 - name: Install packages
   become: True
   apt:

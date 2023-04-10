@@ -28,15 +28,15 @@
 - name: Download ohmyzsh installation script
   get_url:
     url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install.sh
+    dest: /tmp/install-zsh.sh
 
 - name: Make ohmyzsh installation script executable
   file:
-    dest: /tmp/install.sh
+    dest: /tmp/install-zsh.sh
     mode: a+x
 
 - name: Run ohmyzsh installation script
-  shell: echo | /tmp/install.sh
+  shell: echo | /tmp/install-zsh.sh
 
 - name: Clone auto-complete plugin
   shell: git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
