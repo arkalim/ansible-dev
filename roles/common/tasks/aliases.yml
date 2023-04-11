@@ -8,3 +8,4 @@
     echo "alias mv='mv -v'" >> $HOME/.zshrc
     echo "alias path='print -l $path'" >> $HOME/.zshrc
     echo "alias history=\"history -t '%F'\"" >> $HOME/.zshrc
+    echo "alias dc='docker-compose'" >> $HOME/.zshrc

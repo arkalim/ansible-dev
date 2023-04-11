@@ -13,6 +13,8 @@
       - neovim
       - tmux
       - autojump
+      - awscli
+      - node
     state: latest
 
 - name: Package related settings
