@@ -38,3 +38,11 @@
 - name: Install black
   pip:
     name: black
+
+- name: Install pydicom
+  pip:
+    name: pydicom
+
+- name: Install pytest
+  pip:
+    name: pytest
